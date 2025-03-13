@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Photo Gallery</title>
+  <style>
+    /* Global Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 40px 0;
+      font-size: 3rem;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery a {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .gallery a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .lightbox:target {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 12px;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 40px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .close:hover {
+      color: #ff4757;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Photo Gallery</h1>
+
+  <div class="gallery">
+    <a href="#lightbox1"><img src="https://via.placeholder.com/400x300?text=Image+1" alt="Image 1"></a>
+    <a href="#lightbox2"><img src="https://via.placeholder.com/400x300?text=Image+2" alt="Image 2"></a>
+    <a href="#lightbox3"><img src="https://via.placeholder.com/400x300?text=Image+3" alt="Image 3"></a>
+    <a href="#lightbox4"><img src="https://via.placeholder.com/400x300?text=Image+4" alt="Image 4"></a>
+    <a href="#lightbox5"><img src="https://via.placeholder.com/400x300?text=Image+5" alt="Image 5"></a>
+  </div>
+
+  <div id="lightbox1" class="lightbox">
+    <a href="#" class="close">&times;</a>
+    <img src="https://via.placeholder.com/800x600?text=Image+1" alt="Image 1">
+  </div>
+
+  <div id="lightbox2" class="lightbox">
+    <a href="#" class="close">&times;</a>
+    <img src="https://via.placeholder.com/800x600?text=Image+2" alt="Image 2">
+  </div>
+
+  <div id="lightbox3" class="lightbox">
+    <a href="#" class="close">&times;</a>
+    <img src="https://via.placeholder.com/800x600?text=Image+3" alt="Image 3">
+  </div>
+
+  <div id="lightbox4" class="lightbox">
+    <a href="#" class="close">&times;</a>
+    <img src="https://via.placeholder.com/800x600?text=Image+4" alt="Image 4">
+  </div>
+
+  <div id="lightbox5" class="lightbox">
+    <a href="#" class="close">&times;</a>
+    <img src="https://via.placeholder.com/800x600?text=Image+5" alt="Image 5">
+  </div>
+
+</body>
+</html>
