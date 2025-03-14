@@ -1,37 +1,30 @@
 pipeline {
     agent any
-    
+
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'main', url: 'https://github.com/your-username/test.git'
+                git url: 'https://github.com/vijayendarmenni/test.git', branch: 'main'
             }
         }
 
         stage('Deploy to Local Directory') {
             steps {
-                script {
-                    def deployPath = '/usr/local/var/www/html'
-
-                    // Ensure deployment directory exists
-                    sh "sudo mkdir -p ${deployPath}"
-
-                    // Clear previous deployment
-                    sh "sudo rm -rf ${deployPath}/*"
-
-                    // Copy HTML & CSS files
-                    sh "sudo cp -r * ${deployPath}/"
-                }
+                sh '''
+                mkdir -p /usr/local/var/www/html
+                cp -r * /usr/local/var/www/html/
+                echo "Deployment Completed!"
+                '''
             }
         }
     }
 
     post {
-        success {
-            echo 'Deployment Successful!'
-        }
         failure {
-            echo 'Deployment Failed!'
+            echo "Deployment Failed!"
+        }
+        success {
+            echo "Deployment Successful!"
         }
     }
 }
