@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        DEPLOY_DIR = '/Users/vijayendarmenni/deploy'
+    }
+
     stages {
         stage('Clone Repository') {
             steps {
@@ -11,9 +15,9 @@ pipeline {
         stage('Deploy to Local Directory') {
             steps {
                 sh '''
-                mkdir -p /usr/local/var/www/html
-                cp -r * /usr/local/var/www/html/
-                echo "Deployment Completed!"
+                mkdir -p ${DEPLOY_DIR}
+                cp -r * ${DEPLOY_DIR}/
+                echo "Deployment Completed to ${DEPLOY_DIR}"
                 '''
             }
         }
